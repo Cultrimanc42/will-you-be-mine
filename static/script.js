@@ -5,19 +5,27 @@ const buttonArea = document.getElementById("buttonArea");
 
 // Function to move the No button randomly within the button area
 function moveNoButton() {
-  const maxX = buttonArea.offsetWidth - noBtn.offsetWidth - 20;
-  const maxY = buttonArea.offsetHeight - noBtn.offsetHeight - 20;
+  const areaRect = buttonArea.getBoundingClientRect();
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+  
+  const maxX = Math.max(0, areaRect.width - btnWidth - 40);
+  const maxY = Math.max(0, areaRect.height - btnHeight - 40);
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+  const randomX = Math.random() * maxX + 20;
+  const randomY = Math.random() * maxY + 20;
 
   noBtn.style.position = "absolute";
   noBtn.style.left = randomX + "px";
   noBtn.style.top = randomY + "px";
+  noBtn.style.transform = "none";
 }
 
-// Mouse hover - button runs away
+// Mouse enter - button runs away
 noBtn.addEventListener("mouseenter", moveNoButton);
+
+// Mouse move - also trigger if mouse gets too close
+noBtn.addEventListener("mouseover", moveNoButton);
 
 // Touch support for mobile
 noBtn.addEventListener("touchstart", (e) => {
@@ -25,7 +33,7 @@ noBtn.addEventListener("touchstart", (e) => {
   moveNoButton();
 });
 
-// Also move on click attempt
+// Prevent clicking the No button
 noBtn.addEventListener("click", (e) => {
   e.preventDefault();
   moveNoButton();

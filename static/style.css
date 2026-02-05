@@ -71,10 +71,8 @@ p {
 .buttons {
   margin-top: 30px;
   position: relative;
-  height: 140px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  height: 160px;
+  width: 100%;
 }
 
 button {
@@ -84,37 +82,36 @@ button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 #yesBtn {
   background: linear-gradient(135deg, #ff4d6d, #ff1744);
   color: white;
-  position: relative;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
 }
 
 #yesBtn:hover {
-  transform: scale(1.05);
+  transform: translateX(-50%) scale(1.05);
   box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
 }
 
 #yesBtn:active {
-  transform: scale(0.98);
+  transform: translateX(-50%) scale(0.98);
 }
 
 #noBtn {
   background: #ddd;
   color: #333;
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
-}
-
-#noBtn:hover {
-  background: #ccc;
 }
 
 #message {
