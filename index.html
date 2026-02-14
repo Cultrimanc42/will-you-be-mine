@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Only For You 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="luvsong.mp4" type="audio/mp4">
+    </audio>
+
+    <!-- PASSWORD SCREEN -->
+    <div id="passwordScreen">
+        <h2>This is only for someone special 💖</h2>
+        <input type="password" id="passwordInput" placeholder="Enter our secret...">
+        <button onclick="checkPassword()">Unlock 💌</button>
+        <p id="errorMessage"></p>
+    </div>
+
+    <!-- ENVELOPE INTRO -->
+    <div id="envelopeContainer">
+        <div class="envelope" onclick="openLetter()">
+            💌
+            <p>Click to Open</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container" id="mainContent">
+        <h1>To The Most Beautiful Girl 💕</h1>
+        <p id="typing"></p>
+
+        <!-- ELEVATOR CONTAINER -->
+        <div id="elevatorContainer">
+            <div class="floor-display">FLOOR <span id="floorNum">1</span></div>
+
+            <div class="elevator-door left-door"></div>
+            <div class="elevator-door right-door"></div>
+
+            <div id="elevatorCabin">
+                <div class="photo-card active" id="card1">
+                    <img src="her1.jpeg">
+                    <p class="caption">I admire how ambitious you are. I love your drive and your relentless pursuit of
+                        success. It’s one of the things that truly stands out about you, and it’s something I deeply
+                        admire.</p>
+                </div>
+                <div class="photo-card" id="card2">
+                    <img src="her2.jpeg">
+                    <p class="caption">You have such a big heart. You’re righteous, you always honor your mother, and
+                        you take care of your family. That’s truly inspiring. Even if others don’t always see it, I do.
+                    </p>
+                </div>
+                <div class="photo-card" id="card3">
+                    <img src="her3.jpeg">
+                    <p class="caption">I’m really glad to know you as a person. I’m excited to keep getting to know you
+                        even better, and I can’t wait until we can reach the next level, because I really do like you.
+                    </p>
+                </div>
+                <div class="photo-card" id="card4">
+                    <img src="her4.jpeg">
+                    <p class="caption">When I look at you, I see more than beauty—I see inspiration. You carry a light
+                        that makes everything feel possible, as if the world itself bends toward hope when you walk into
+                        a room.</p>
+                </div>
+                <div class="photo-card" id="card5">
+                    <img src="her5.jpeg">
+                    <p class="caption">You are beautiful in ways that go beyond the surface. Your laughter has a rhythm
+                        that lifts me, your kindness has a strength that steadies me, and your resilience reminds me
+                        that grace and power can live side by side.</p>
+                </div>
+                <div class="photo-card" id="card6">
+                    <img src="her6.jpeg">
+                    <p class="caption">What moves me most is how your beauty touches hearts. It’s in the way you listen
+                        with patience, the way you encourage without hesitation, and the way you believe in others even
+                        when they struggle to believe in themselves.</p>
+                </div>
+                <div class="photo-card" id="card7">
+                    <img src="lwazi4.jpeg">
+                    <p class="caption">I know life can get hard sometimes, and there are struggles, but I just want to
+                        let you know that you are awesome, and never let anyone take that from you. You deserve
+                        happiness, success, and peace.</p>
+                </div>
+                <div class="photo-card" id="card8">
+                    <img src="lwazi5.jpeg">
+                    <p class="caption">Being around you — even just talking to you — makes my day better. You have this
+                        energy about you that feels warm, safe, and inspiring all at once. It’s rare, and I don’t take
+                        it for granted.</p>
+                </div>
+                <div class="photo-card" id="card9">
+                    <img src="lwazi6.jpeg">
+                    <p class="caption">I have the biggest crush on you, and I would love to continue this thing that we
+                        have. You inspire me to dream bigger, live bolder, and cherish every moment. 💖</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="navButtons" style="display:none;">
+            <button onclick="nextFloor()">Go to Next Floor ⬆️</button>
+        </div>
+
+        <div id="finalQuestion" style="display:none;">
+            <h2>Will you always be mine? 💖</h2>
+            <div class="buttons">
+                <button onclick="yesClicked()">Yes 💕</button>
+                <button onclick="noClicked()">No 😢</button>
+            </div>
+        </div>
+
+        <div id="response"></div>
+        <div id="sadCharacter" class="sad-character">😢</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

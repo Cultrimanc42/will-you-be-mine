@@ -1,0 +1,382 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffc0cb, #ffe4e1);
+    text-align: center;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* PASSWORD SCREEN */
+#passwordScreen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#passwordScreen input {
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    margin: 10px;
+    text-align: center;
+}
+
+#passwordScreen button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background: white;
+    color: #ff4d6d;
+}
+
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* ENVELOPE */
+#envelopeContainer {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope {
+    font-size: 100px;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+}
+
+.envelope p {
+    font-size: 18px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* MAIN CONTENT */
+#mainContent {
+    display: none;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#elevatorContainer {
+    position: relative;
+    width: 380px;
+    height: 580px;
+    margin: 40px auto;
+    background: #1a1a1a;
+    /* Darker shaft */
+    border: 12px solid #333;
+    /* Heavy frame */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 100px rgba(0, 0, 0, 0.8);
+    display: none;
+    border-color: #555 #333 #111 #333;
+    /* Metallic bevel */
+}
+
+.floor-display {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #ff3d00;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 8px 25px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 24px;
+    z-index: 20;
+    box-shadow: 0 0 15px rgba(255, 61, 0, 0.6);
+    border: 2px solid #222;
+    text-shadow: 0 0 10px rgba(255, 61, 0, 0.8);
+}
+
+.elevator-door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #f06292, #ec407a, #d81b60);
+    z-index: 15;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.left-door {
+    left: 0;
+    border-right: 3px solid #b71c1c;
+    border-radius: 5px 0 0 5px;
+}
+
+.right-door {
+    right: 0;
+    border-left: 3px solid #b71c1c;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Metallic Door Bevel */
+.elevator-door::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1) 50%, transparent);
+}
+
+/* Door handles */
+.left-door::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    width: 8px;
+    background: linear-gradient(to right, #bdc3c7, #2c3e50);
+    border-radius: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.right-door::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    width: 8px;
+    background: linear-gradient(to left, #bdc3c7, #2c3e50);
+    border-radius: 10px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#elevatorContainer.open .left-door {
+    transform: translateX(-100%);
+}
+
+#elevatorContainer.open .right-door {
+    transform: translateX(100%);
+}
+
+#elevatorCabin {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fffafa;
+    /* Cabin interior */
+    transition: transform 1s ease-in-out;
+}
+
+.photo-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 60px 30px 30px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.photo-card.active {
+    opacity: 1;
+}
+
+/* Position cards vertically to slide them */
+#card1 {
+    top: 0;
+}
+
+#card2 {
+    top: 100%;
+}
+
+#card3 {
+    top: 200%;
+}
+
+#card4 {
+    top: 300%;
+}
+
+#card5 {
+    top: 400%;
+}
+
+#card6 {
+    top: 500%;
+}
+
+#card7 {
+    top: 600%;
+}
+
+#card8 {
+    top: 700%;
+}
+
+#card9 {
+    top: 800%;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 5px solid white;
+}
+
+.caption {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 0;
+    border-bottom: 4px solid #ff4d6d;
+    box-shadow: 0 8px 32px rgba(255, 77, 109, 0.2);
+    font-style: italic;
+}
+
+.sad-character {
+    position: fixed;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 100px;
+    transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2000;
+}
+
+.sad-character.show {
+    bottom: 50px;
+    animation: crying 1s infinite alternate;
+}
+
+@keyframes crying {
+    0% {
+        transform: translateX(-50%) rotate(-5deg);
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(5deg);
+        filter: hue-rotate(20deg);
+    }
+}
+
+button {
+    padding: 12px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buttons [onclick*="yes"],
+#navButtons button {
+    background: #ff4d6d;
+    color: white;
+}
+
+.buttons [onclick*="no"] {
+    background: #ffb3c1;
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+}
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    animation: sparkleFade 0.8s linear forwards;
+}
+
+@keyframes sparkleFade {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(180deg);
+    }
+}
+
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    z-index: 999;
+    animation: floatUp 3s ease-in forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
